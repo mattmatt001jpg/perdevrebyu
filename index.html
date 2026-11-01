@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#15243a">
+  <meta name="description" content="A shuffled multiple-choice reviewer covering all 13 pages of the Understanding the Self handout.">
+  <title>Understanding the Self — 13-Page Quiz</title>
+  <style>
+    :root{--navy:#15243a;--navy2:#203653;--cream:#f7f3ea;--paper:#fffdfa;--ink:#172033;--muted:#697386;--line:#e4dfd5;--gold:#d39a38;--teal:#287d78;--green:#13745b;--red:#b64646;--shadow:0 18px 55px rgba(30,38,51,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    button{font:inherit}.shell{width:min(940px,calc(100% - 32px));margin:auto;padding:28px 0 48px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);letter-spacing:-.02em}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:var(--navy);color:#fff;font-family:Georgia,serif;font-size:21px}
+    .hero{position:relative;overflow:hidden;background:var(--navy);border-radius:26px;padding:38px;color:#fff;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-110px;top:-135px;border:55px solid rgba(211,154,56,.14)}.eyebrow{position:relative;z-index:1;color:#f0c36f;text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:800}.hero h1{position:relative;z-index:1;max-width:640px;margin:8px 0 10px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,6vw,3.5rem);line-height:1.05;font-weight:700;letter-spacing:-.03em}.hero p{position:relative;z-index:1;max-width:650px;margin:0;color:#dce4ee}.hero-stats{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.stat{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px 14px;min-width:112px}.stat strong{display:block;font-size:1.15rem}.stat span{font-size:.74rem;color:#c5d0de;text-transform:uppercase;letter-spacing:.08em}
+    .card{margin-top:18px;background:var(--paper);border:1px solid rgba(21,36,58,.08);border-radius:24px;padding:28px;box-shadow:0 10px 35px rgba(30,38,51,.07)}.page-label{color:var(--teal);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.intro h2,.results h2{font-family:Georgia,serif;font-size:clamp(1.65rem,4vw,2.25rem);margin:7px 0 10px}.intro p,.results p{color:var(--muted);margin:0}.primary,.secondary{border:0;border-radius:13px;padding:13px 19px;font-weight:800;cursor:pointer;transition:transform .16s,box-shadow .16s,background .16s}.primary{background:var(--gold);color:#1c2532;box-shadow:0 8px 20px rgba(211,154,56,.25)}.primary:hover{transform:translateY(-1px);box-shadow:0 11px 25px rgba(211,154,56,.32)}.secondary{background:#edf0f4;color:var(--navy)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .quiz{display:none}.quiz-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}.count{font-size:.85rem;color:var(--muted);font-weight:700}.score-live{font-size:.83rem;font-weight:800;color:var(--teal);background:#eaf4f2;padding:7px 10px;border-radius:999px}.progress{height:7px;background:#e7e6e1;border-radius:999px;overflow:hidden;margin-bottom:25px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),#52a69f);border-radius:inherit;transition:width .3s}.question{font-family:Georgia,serif;font-size:clamp(1.35rem,4vw,1.85rem);line-height:1.28;margin:5px 0 22px}.options{display:grid;gap:11px}.option{display:flex;align-items:flex-start;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:15px;padding:14px 15px;background:#fff;color:var(--ink);cursor:pointer;transition:border .15s,background .15s,transform .15s}.option:hover:not(:disabled){border-color:#82aaa6;background:#f6fbfa;transform:translateY(-1px)}.option:disabled{cursor:default}.letter{display:grid;place-items:center;flex:0 0 29px;height:29px;margin-right:12px;border-radius:9px;background:#f0ede7;color:var(--navy);font-size:.78rem;font-weight:900}.option.correct{border-color:#58a88f;background:#edf8f3}.option.correct .letter{background:var(--green);color:#fff}.option.wrong{border-color:#d88787;background:#fff1f0}.option.wrong .letter{background:var(--red);color:#fff}.feedback{display:none;margin-top:17px;border-radius:15px;padding:14px 16px;background:#f2f5f7;color:#445064}.feedback strong{display:block;color:var(--ink);margin-bottom:2px}.next-row{display:none;justify-content:flex-end;margin-top:18px}
+    .results{display:none;text-align:center}.score-ring{display:grid;place-items:center;width:148px;height:148px;margin:8px auto 22px;border-radius:50%;background:conic-gradient(var(--teal) 0%,#e4e5df 0);position:relative}.score-ring:after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--paper)}.score-inner{z-index:1}.score-inner strong{display:block;font-family:Georgia,serif;font-size:2.2rem;line-height:1}.score-inner span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}.breakdown div{padding:14px 8px;border-radius:14px;background:#f2f3f0}.breakdown strong{display:block;font-size:1.25rem}.breakdown span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}.results .actions{justify-content:center}.footer{text-align:center;color:#89909b;font-size:.75rem;margin-top:20px}
+    @media(max-width:640px){.shell{width:min(100% - 20px,940px);padding:14px 0 28px}.topbar{margin-bottom:12px}.hero{border-radius:20px;padding:28px 22px}.hero-stats{display:grid;grid-template-columns:1fr}.stat{min-width:0}.card{border-radius:19px;padding:20px 16px}.option{padding:13px 12px}.breakdown{gap:6px}.breakdown div{padding:12px 4px}.primary,.secondary{width:100%}.next-row .primary{width:100%}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-mark">U</span><span>PerDev Reviewer</span></div></header>
+
+    <section class="hero">
+      <div class="eyebrow">Understanding the Self</div>
+      <h1>Know yourself.<br>Test what you know.</h1>
+      <p>A comprehensive multiple-choice review built from every page of the supplied 13-page learning material.</p>
+      <div class="hero-stats"><div class="stat"><strong id="heroTotal">0</strong><span>Questions</span></div></div>
+    </section>
+
+    <section class="card intro" id="intro">
+      <div class="page-label">Ready when you are</div>
+      <h2>One complete review</h2>
+      <p>Answer every item at your own pace. You’ll see the correct answer and a short explanation after each choice.</p>
+      <div class="actions"><button class="primary" id="startBtn">Start the quiz</button></div>
+    </section>
+
+    <section class="card quiz" id="quiz" aria-live="polite">
+      <div class="quiz-head"><span class="count" id="count"></span><span class="score-live" id="scoreLive"></span></div>
+      <div class="progress" role="progressbar" aria-label="Quiz progress"><div class="progress-fill" id="progressFill"></div></div>
+      <h2 class="question" id="question"></h2>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="next-row" id="nextRow"><button class="primary" id="nextBtn">Next question</button></div>
+    </section>
+
+    <section class="card results" id="results">
+      <div class="score-ring" id="scoreRing"><div class="score-inner"><strong id="percent">0%</strong><span>Final score</span></div></div>
+      <h2 id="resultTitle">Review complete</h2><p id="resultText"></p>
+      <div class="breakdown"><div><strong id="correctTotal">0</strong><span>Correct</span></div><div><strong id="wrongTotal">0</strong><span>To review</span></div><div><strong>13</strong><span>Pages</span></div></div>
+      <div class="actions"><button class="primary" id="retryBtn">Try a new shuffle</button><button class="secondary" id="homeBtn">Back to start</button></div>
+    </section>
+    <div class="footer">Based exclusively on the supplied Understanding the Self handout • Educational reviewer</div>
+  </main>
+
+  <script>
+    const bank = [
+      {p:1,q:"Which statement best contrasts Western and Eastern thought in the handout?",o:["Western thought emphasizes the self; Eastern thought emphasizes others and the group","Western thought rejects success; Eastern thought requires it","Both focus only on material wealth","Both reject cultural tradition"],a:0,e:"Page 1 contrasts a Western focus on oneself and personal needs with an Eastern focus on others, feelings, and collectivism."},
+      {p:1,q:"In the Western view presented, wealth and poverty are mainly seen as results of what?",o:["Enterprise and hard work","Fortune and luck","Reincarnation","Seniority alone"],a:0,e:"The handout links the Western view to enterprise and hard work, while the Eastern view mentions fortune and luck."},
+      {p:1,q:"Which tradition seeks social harmony through love, righteousness, wisdom, propriety, and loyalty?",o:["Confucianism","Hinduism","Buddhism","Taoism"],a:0,e:"These virtues are listed under Confucianism."},
+      {p:1,q:"In Hinduism, liberation involves identifying Atman with what?",o:["Brahman","Kapwa","Dungan","The ego"],a:0,e:"Atman is the spiritual essence of the individual; Brahman is the spiritual essence of the universe."},
+      {p:1,q:"The Filipino psychology concept of shared identity is called what?",o:["Kapwa","Atman","Propriety","Phenomenology"],a:0,e:"Kapwa recognizes an inner self shared with others."},
+      {p:1,q:"What are the two modes of social interaction associated with Kapwa?",o:["Ibang-tao and hindi ibang-tao","Atman and Brahman","Self and ego","Body and spirit"],a:0,e:"They mean “outsider” and “one-of-us,” respectively."},
+      {p:1,q:"Which behavior is characteristic of individualism?",o:["Giving priority to personal goals","Letting the in-group primarily shape behavior","Always behaving communally","Prioritizing group goals over personal goals"],a:0,e:"Individualism emphasizes autonomy and personal goals."},
+      {p:1,q:"Which behavior is characteristic of collectivism?",o:["Maintaining relationships with others","Acting independently of all in-groups","Giving priority only to personal goals","Basing behavior only on personal attitudes"],a:0,e:"Collectivism stresses interdependence, group goals, and relationship maintenance."},
+
+      {p:2,q:"What does the physical self refer to?",o:["The body through which we engage with the environment and other people","Only a person’s private beliefs","A person’s possessions alone","A purely imaginary identity"],a:0,e:"The physical self is the tangible, observable body through which we interface with the world."},
+      {p:2,q:"Who considered the body an initial source of sensation necessary for personality?",o:["William James","Sigmund Freud","B. F. Skinner","Carl Jung"],a:0,e:"This view is attributed to William James."},
+      {p:2,q:"Whose construction of self and personality places the physical body at the core of human experience?",o:["Sigmund Freud","Erik Erikson","Wilhelm Reich","Robert Sternberg"],a:0,e:"The handout identifies this as Sigmund Freud’s view."},
+      {p:2,q:"Who proposed that mind and body are one and that psychological and physical processes are connected?",o:["Wilhelm Reich","William James","Carl Jung","Viktor Frankl"],a:0,e:"Wilhelm Reich treated mind and body as inseparable."},
+      {p:2,q:"Who emphasized that bodily organs are especially important during early developmental stages?",o:["Erik Erikson","B. F. Skinner","Sigmund Freud","Robert Sternberg"],a:0,e:"This point appears under Erik Erikson."},
+
+      {p:3,q:"Who said the physical body and external world can be known only as psychological experiences?",o:["Carl Jung","B. F. Skinner","William James","Wilhelm Reich"],a:0,e:"The statement is listed under Carl Jung."},
+      {p:3,q:"How does the handout define self-esteem?",o:["A person’s overall evaluation of their self-worth","A person’s financial value","A measure of physical strength","The opinion of one’s family only"],a:0,e:"Self-esteem is the overall evaluation of one’s self-worth."},
+      {p:3,q:"Which type of self-esteem involves not valuing oneself or trusting one’s possibilities?",o:["Low self-esteem","High self-esteem","Inflated self-esteem","Collective self-esteem"],a:0,e:"These traits describe low self-esteem."},
+      {p:3,q:"Which type of self-esteem may involve feeling better than others and underestimating them?",o:["Inflated self-esteem","High self-esteem","Low self-esteem","Stable self-esteem"],a:0,e:"Inflated self-esteem includes excessively high self-regard at others’ expense."},
+      {p:3,q:"How were women commonly portrayed as beautiful in Egyptian art according to the handout?",o:["Slim, high-waisted, with narrow hips and long black hair","With neck rings","With bound feet","With facial scarification only"],a:0,e:"Those features are listed in the Egyptian art example."},
+      {p:3,q:"Which beauty practice is associated with the Kayan tribe in Myanmar?",o:["Neck rings","Foot binding","Face painting","Scarification"],a:0,e:"The handout associates the Kayan tribe with neck rings."},
+      {p:3,q:"Which practice is associated with historical beauty standards in China?",o:["Foot binding","Neck rings","Flat-nose shaping","Scarification"],a:0,e:"Foot binding is the example given for China."},
+      {p:3,q:"What central point does the handout make about beauty standards?",o:["They vary by culture and change over time","They are identical in every society","They are determined only by biology","They never influence social experience"],a:0,e:"The material emphasizes cultural variation and changing standards of beauty."},
+
+      {p:4,q:"What is adolescence or puberty in sexual development?",o:["Maturation of the reproductive system and development of sex characteristics","The end of all physical development","A purely social label with no physical changes","The start of old age"],a:0,e:"Puberty includes reproductive maturation and the development of sex characteristics."},
+      {p:4,q:"Primary sex characteristics are best defined as what?",o:["Anatomical traits essential to reproduction","Interests learned from friends","Traits unrelated to reproduction","Clothing and speech preferences"],a:0,e:"Primary sex characteristics are anatomical traits essential to reproduction."},
+      {p:4,q:"Secondary sex characteristics result mainly from what?",o:["The action of sex-related hormones","Personal wealth","Schooling","Family size"],a:0,e:"They are physical traits not essential to reproduction that result from hormonal action."},
+      {p:4,q:"What is the source of spermatozoa?",o:["Testes","Scrotum","Prostate gland","Urethra"],a:0,e:"The testes produce spermatozoa, the male germ cells."},
+      {p:4,q:"What is the scrotum?",o:["A sac of skin that contains the testes","A gland that produces ova","The tube leading from ovary to uterus","The site where a fetus develops"],a:0,e:"The scrotum is the skin sac below the abdomen that encloses the testes."},
+      {p:4,q:"Through which structure do urine and seminal fluid leave the male body?",o:["Urethra","Fallopian tube","Vas deferens only","Scrotum"],a:0,e:"The urethra leads to the outside through the penis."},
+
+      {p:5,q:"Which female reproductive organ produces ova?",o:["Ovary","Uterus","Vagina","Fallopian tube"],a:0,e:"The ovaries produce ova, or female germ cells."},
+      {p:5,q:"Where does a fertilized ovum normally develop into a baby?",o:["Uterus","Ovary","Vulva","Cervix only"],a:0,e:"The uterus is the hollow, muscular structure where the zygote develops."},
+      {p:5,q:"What are erogenous zones?",o:["Areas generally more sensitive to pain and pleasure","Organs used only for breathing","Places unaffected by touch","Parts of the skeleton"],a:0,e:"The handout defines them as areas especially sensitive to pain and pleasure."},
+      {p:5,q:"According to the handout, where do sexual desire and control of sexual behavior originate?",o:["The brain","The hands","The heart muscle","The stomach"],a:0,e:"Cognitive factors and the brain play important roles in sexual desire and behavior."},
+      {p:5,q:"What is the sexual response cycle?",o:["A sequence of physical and emotional events during sexual stimulation","A method of contraception","A stage of prenatal growth","A measure of gender identity"],a:0,e:"It describes the physical and emotional sequence during sexually stimulating activity."},
+      {p:5,q:"Who pioneered major research on human sexual response in the 1950s?",o:["William Masters and Virginia Johnson","William James and Carl Jung","Freud and Erikson","Sternberg and Frankl"],a:0,e:"Masters and Johnson are named as pioneers in this research."},
+
+      {p:6,q:"Which phase marks the beginning of sexual arousal?",o:["Excitement","Plateau","Orgasm","Resolution"],a:0,e:"Excitement is the first phase and can last from minutes to hours."},
+      {p:6,q:"Which phase is the brief period in which changes intensify as the body prepares for orgasm?",o:["Plateau","Excitement","Resolution","Refractory"],a:0,e:"The plateau phase is the preparation period before orgasm."},
+      {p:6,q:"Which phase is the climax and usually the shortest part of the sexual response cycle?",o:["Orgasm","Plateau","Excitement","Resolution"],a:0,e:"Orgasm is described as the climax and generally lasts only seconds."},
+      {p:6,q:"During which phase does arousal decrease?",o:["Resolution","Plateau","Excitement","Orgasm"],a:0,e:"Resolution is the final phase, when arousal decreases."},
+      {p:6,q:"What does sexual orientation refer to?",o:["A person’s sexual and romantic interests","A person’s reproductive organs","A person’s clothing style only","A person’s age"],a:0,e:"Sexual orientation concerns patterns of sexual and romantic interest."},
+      {p:6,q:"A person attracted to people of the opposite sex is described as what?",o:["Heterosexual","Homosexual","Bisexual","Asexual in all cases"],a:0,e:"The handout defines heterosexual attraction as attraction to the opposite sex."},
+      {p:6,q:"A person attracted to both the same sex and another sex is described as what?",o:["Bisexual","Heterosexual","Homosexual","Transsexual"],a:0,e:"Bisexuality is romantic or sexual attraction to both men and women in the wording of the handout."},
+      {p:6,q:"What is gender identity?",o:["A person’s internal sense of being a woman, man, both, or neither","A person’s romantic attraction","A person’s reproductive capacity","A medical measurement"],a:0,e:"Gender identity refers to one’s internal sense of gender."},
+
+      {p:7,q:"Who proposed the Triangular Theory of Love?",o:["Robert Sternberg","Viktor Frankl","William James","Erik Erikson"],a:0,e:"American psychologist Robert Sternberg proposed the theory."},
+      {p:7,q:"Which three components form Sternberg’s triangle of love?",o:["Intimacy, passion, and commitment","Trust, wealth, and status","Body, mind, and possessions","Emotion, luck, and beauty"],a:0,e:"The theory combines intimacy, passion, and commitment in different ways."},
+      {p:7,q:"Which type of love contains intimacy only?",o:["Liking or friendship","Infatuation","Empty love","Fatuous love"],a:0,e:"Liking/friendship contains intimacy without passion or commitment."},
+      {p:7,q:"Which type of love contains passion only?",o:["Infatuation","Companionate love","Empty love","Romantic love"],a:0,e:"Infatuation is passion without intimacy or commitment."},
+      {p:7,q:"Which type of love contains commitment only?",o:["Empty love","Romantic love","Fatuous love","Liking"],a:0,e:"Empty love has commitment without intimacy or passion."},
+      {p:7,q:"Which type combines intimacy and passion but lacks commitment?",o:["Romantic love","Companionate love","Fatuous love","Consummate love"],a:0,e:"Romantic love combines intimacy and passion."},
+      {p:7,q:"Which type combines intimacy and commitment and is often seen in long-term marriages?",o:["Companionate love","Infatuation","Fatuous love","Nonlove"],a:0,e:"Companionate love contains intimacy and commitment."},
+      {p:7,q:"Which type contains passion and commitment but not intimacy?",o:["Fatuous love","Romantic love","Liking","Empty love"],a:0,e:"Fatuous love is the passion-plus-commitment combination."},
+      {p:7,q:"Which type includes intimacy, passion, and commitment?",o:["Consummate love","Companionate love","Romantic love","Infatuation"],a:0,e:"Consummate love contains all three components."},
+      {p:7,q:"Republic Act No. 10354 is commonly known as what?",o:["The Responsible Parenthood and Reproductive Health Act of 2012","The Universal Education Act","The Family Property Act","The Cultural Heritage Act"],a:0,e:"RA 10354 is the Reproductive Health Law described on page 7."},
+
+      {p:8,q:"Which natural method involves avoiding intercourse during fertile days?",o:["Calendar or rhythm method","Hormonal injection","Implant","Vasectomy"],a:0,e:"The calendar method estimates fertile days and avoids coitus during that period."},
+      {p:8,q:"What does the basal body temperature method monitor?",o:["Resting temperature each morning","Blood type each week","Heart rate after exercise","Body weight each evening"],a:0,e:"BBT tracks small changes in resting temperature before daily activity."},
+      {p:8,q:"The cervical mucus method is based on changes occurring during what?",o:["Ovulation","Digestion","Sleep","Exercise"],a:0,e:"Changes in cervical mucus help indicate ovulation."},
+      {p:8,q:"The symptothermal method combines cervical mucus observation with what?",o:["Basal body temperature","A hormonal implant","A diaphragm","Surgery"],a:0,e:"It combines BBT and the cervical mucus method."},
+      {p:8,q:"An ovulation detection kit checks urine for which hormone?",o:["Luteinizing hormone (LH)","Insulin","Adrenaline","Melatonin"],a:0,e:"The kit detects an LH surge to help predict ovulation."},
+      {p:8,q:"Lactational amenorrhea is intended for whom?",o:["Exclusively breastfeeding women within the specified postpartum conditions","Anyone taking hormonal pills","Men after vasectomy","People using a cervical cap"],a:0,e:"LAM applies during exclusive breastfeeding, typically up to six months after childbirth if menstruation has not returned."},
+      {p:8,q:"How do hormonal contraceptive methods help prevent pregnancy?",o:["They may stop ovulation, thicken cervical mucus, and alter the uterine lining","They remove the ovaries","They permanently block all hormones","They work only as physical barriers"],a:0,e:"The handout lists those three hormonal mechanisms."},
+      {p:8,q:"Where are subdermal contraceptive implants commonly placed?",o:["Under the skin of the arm","Inside the stomach","Around the ankle","Inside the lung"],a:0,e:"The small hormone-filled rods are inserted under the skin of the arm."},
+      {p:8,q:"How do barrier methods work?",o:["They block sperm and egg from meeting","They predict ovulation only","They permanently stop menstruation","They increase fertility"],a:0,e:"Barrier methods physically reduce the chance of sperm reaching an egg."},
+      {p:8,q:"Which barrier method also helps prevent sexually transmitted infections when used properly?",o:["Male condom","Calendar method","BBT method","Withdrawal"],a:0,e:"The handout identifies condoms as helping prevent both pregnancy and STDs/STIs."},
+
+      {p:9,q:"How long can a diaphragm be left in place in total according to the handout?",o:["24 hours","6 hours","48 hours","One week"],a:0,e:"It may be inserted in advance and left in for a total of 24 hours."},
+      {p:9,q:"How long can a cervical cap be left in the body in total?",o:["48 hours","12 hours","24 hours","One month"],a:0,e:"The handout gives a total of 48 hours."},
+      {p:9,q:"How long does the vaginal ring remain in place before removal for the fourth week?",o:["Three weeks","Three days","Six months","One year"],a:0,e:"It remains for three weeks and is removed during the fourth week."},
+      {p:9,q:"What shape are the intrauterine devices described in the handout?",o:["T-shaped","Circular","Square","Spiral only"],a:0,e:"IUDs are described as T-shaped objects placed in the uterus."},
+      {p:9,q:"Emergency contraceptive methods in the handout should be used within what period?",o:["72 hours","Two weeks","One month","One year"],a:0,e:"The material specifies within 72 hours of unprotected intercourse or contraceptive failure."},
+      {p:9,q:"What happens in a tubal ligation?",o:["The fallopian tubes are cut, tied, or cauterized","The uterus is removed","The ovaries are stimulated","The vas deferens is ligated"],a:0,e:"Tubal ligation prevents eggs from reaching sperm by blocking the fallopian tubes."},
+      {p:9,q:"Which structure is ligated in a vasectomy?",o:["Vas deferens","Fallopian tube","Urethra","Cervix"],a:0,e:"Vasectomy is a male sterilization procedure involving the vas deferens."},
+
+      {p:10,q:"According to William James, what does the material self include?",o:["Objects, places, and people a person calls “mine”","Only money in a bank account","Only the physical body","Only spiritual beliefs"],a:0,e:"The material self includes the body, possessions, home, family, reputation, works, and more."},
+      {p:10,q:"Which phrase summarizes the handout’s idea that possessions extend identity?",o:["We are what we have","Knowledge is power","Time heals all wounds","Less is always more"],a:0,e:"The phrase appears in the discussion of possessions as extensions of identity."},
+      {p:10,q:"What is described as the innermost part of the material self?",o:["The body","Clothes","Home","Bank account"],a:0,e:"The body is the innermost component and one we cannot live without."},
+      {p:10,q:"Why are clothes part of the material self?",o:["They can carry symbolic meaning and express the self","They never affect attitude or behavior","They are biologically inherited","They replace personal identity"],a:0,e:"Style, brand, fabric, and clothing choices can express identity and affect experience."},
+      {p:10,q:"Why are immediate family members included in the material self?",o:["People may feel psychologically connected to them as extensions of self","They are physical possessions","They always share the same goals","They determine clothing style"],a:0,e:"Family and close friends can strongly shape identity and feel psychologically connected to the self."},
+      {p:10,q:"Why is the home described as an extension of self?",o:["It holds experiences and memories connected to our selfhood","It is always a financial investment","It prevents all mental distress","It has no connection to identity"],a:0,e:"The home is called an early nest of selfhood, marked by personal experiences."},
+      {p:10,q:"What positive effect can desired material possessions have?",o:["They can motivate people to work harder","They guarantee happiness","They eliminate all stress","They prevent failure"],a:0,e:"The handout notes that possessions can motivate people to work harder to attain them."},
+
+      {p:11,q:"What is materialism?",o:["The importance a person gives to material possessions","The rejection of all physical objects","A religious ritual","A type of body image"],a:0,e:"Materialism concerns the importance assigned to possessions and can include an excessive desire for them."},
+      {p:11,q:"A materialistic person is excessively concerned with what?",o:["Acquiring material possessions","Spiritual rituals only","Avoiding all purchases","Building relationships only"],a:0,e:"A high level of materialism involves excessive concern with acquiring possessions."},
+      {p:11,q:"Compulsive buying disorder is characterized by what?",o:["Shopping and buying obsessions that cause harmful consequences","Careful budgeting","Avoiding stores","Occasional planned purchases"],a:0,e:"CBD may impair functioning and lead to consequences such as debt."},
+      {p:11,q:"What question does the handout recommend asking before a purchase?",o:["Do I really need this?","Will this impress everyone?","Is this the newest model?","Can I buy two?"],a:0,e:"The suggested self-check is: “Do I really need this?”"},
+      {p:11,q:"What does the spiritual self concern?",o:["The mind’s inner workings, behavior, beliefs, morals, will, and intellect","Only visible possessions","Only physical strength","Only social status"],a:0,e:"The spiritual self includes the will, intelligence, abilities, morals, values, and beliefs."},
+      {p:11,q:"Who called the spiritual self the most enduring and intimate part of the self?",o:["William James","Robert Sternberg","Viktor Frankl","B. F. Skinner"],a:0,e:"That quotation is attributed to William James."},
+
+      {p:12,q:"How does spirituality differ from religiosity in the handout?",o:["Spirituality concerns the sacred or human spirit; religiosity involves belief in God or gods and adherence to a religion","They are defined as exactly identical","Spirituality concerns possessions only","Religiosity excludes all beliefs"],a:0,e:"The page distinguishes a broad concern with the sacred from conscious adherence to religious beliefs."},
+      {p:12,q:"Why can spirituality be important to well-being?",o:["Meaninglessness can contribute to anxiety and depression, while spiritual practices may support well-being","It guarantees wealth","It eliminates every illness","It replaces all medical care"],a:0,e:"The material connects meaning and purpose with psychological well-being."},
+      {p:12,q:"What is religion?",o:["An organized system of ideas, beliefs, and practices concerning spiritual or supernatural reality","A personal shopping habit","A physical trait","A contraceptive method"],a:0,e:"Religion is presented as an organized system with beliefs and ceremonial practices."},
+      {p:12,q:"What is a worldview?",o:["Shared cultural ideas about the ultimate shape and substance of reality","A single private ritual","A biological process","A material possession"],a:0,e:"A worldview is the collective body of ideas members of a culture generally share about reality."},
+      {p:12,q:"What is a myth in the religious context used by the handout?",o:["A sacred narrative explaining fundamental questions of existence","Any statement known to be false","A shopping story","A scientific measurement"],a:0,e:"A myth is a sacred narrative about origins, purpose, and destiny."},
+      {p:12,q:"What is a ritual?",o:["A culturally prescribed symbolic act guiding personal or collective transitions","An accidental action","A financial transaction","A physical organ"],a:0,e:"Rituals are orderly symbolic acts; the material notes calendric and crisis types."},
+      {p:12,q:"The words kaluluwa and dungan refer to what?",o:["Soul or spirit","Material wealth","Body image","Gender identity"],a:0,e:"Tagalogs use kaluluwa and Ilonggos use dungan in the discussion of soul or spirit."},
+      {p:12,q:"How is dungan described?",o:["A life force or ethereal entity with a will of its own","A physical possession","A kind of clothing","A reproductive organ"],a:0,e:"Dungan is an unseen life force that provides the essence of life and may connote willpower."},
+      {p:12,q:"What is the Visayan fishing-village offering ritual mentioned in the handout?",o:["Harang","Kapwa","Atman","LAM"],a:0,e:"Harang is an offering ritual in which a local shaman invokes sea spirits."},
+
+      {p:13,q:"Which course title appears in the handout header?",o:["Understanding the Self","Human Anatomy","World History","Introduction to Economics"],a:0,e:"The continuing document header identifies the course as “Understanding the Self.”"}
+    ];
+
+    const $=id=>document.getElementById(id);
+    const intro=$('intro'),quiz=$('quiz'),results=$('results');
+    let questions=[],index=0,score=0,answered=false;
+
+    function shuffle(items){const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+    function randomizedQuestion(item){const choices=item.o.map((text,i)=>({text,correct:i===item.a}));return {...item,choices:shuffle(choices)}}
+    function show(section){[intro,quiz,results].forEach(el=>el.style.display='none');section.style.display='block';window.scrollTo({top:section===intro?0:Math.max(0,section.offsetTop-14),behavior:'smooth'})}
+    function start(){questions=shuffle(bank).map(randomizedQuestion);index=0;score=0;answered=false;show(quiz);render()}
+    function render(){const item=questions[index];answered=false;$('count').textContent=`Question ${index+1} of ${questions.length}`;$('scoreLive').textContent=`${score} correct`;$('progressFill').style.width=`${(index/questions.length)*100}%`;$('question').textContent=item.q;$('feedback').style.display='none';$('nextRow').style.display='none';const wrap=$('options');wrap.innerHTML='';item.choices.forEach((choice,i)=>{const btn=document.createElement('button');btn.className='option';btn.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${choice.text}</span>`;btn.addEventListener('click',()=>select(btn,choice.correct,item));wrap.appendChild(btn)});$('nextBtn').textContent=index===questions.length-1?'See my results':'Next question'}
+    function select(button,isCorrect,item){if(answered)return;answered=true;if(isCorrect)score++;document.querySelectorAll('.option').forEach((btn,i)=>{btn.disabled=true;if(item.choices[i].correct)btn.classList.add('correct')});if(!isCorrect)button.classList.add('wrong');$('feedback').innerHTML=`<strong>${isCorrect?'Correct — well done.':'Not quite — keep going.'}</strong>${item.e}`;$('feedback').style.display='block';$('scoreLive').textContent=`${score} correct`;$('progressFill').style.width=`${((index+1)/questions.length)*100}%`;$('nextRow').style.display='flex'}
+    function next(){if(index<questions.length-1){index++;render();window.scrollTo({top:quiz.offsetTop-14,behavior:'smooth'})}else finish()}
+    function finish(){const pct=Math.round(score/questions.length*100);$('percent').textContent=`${pct}%`;$('correctTotal').textContent=score;$('wrongTotal').textContent=questions.length-score;$('scoreRing').style.background=`conic-gradient(var(--teal) ${pct}%,#e4e5df ${pct}%)`;let title='A solid first pass';if(pct>=90)title='Exceptional work';else if(pct>=75)title='Strong understanding';else if(pct<50)title='Keep building';$('resultTitle').textContent=title;$('resultText').textContent=`You answered ${score} of ${questions.length} questions correctly. Each retry creates a completely new order.`;show(results)}
+
+    $('heroTotal').textContent=bank.length;
+    $('startBtn').addEventListener('click',start);$('nextBtn').addEventListener('click',next);$('retryBtn').addEventListener('click',start);$('homeBtn').addEventListener('click',()=>show(intro));
+  </script>
+</body>
+</html>
